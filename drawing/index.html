@@ -1,0 +1,183 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="apple-mobile-web-app-title" content="Darin">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon.png"/>
+	<link rel="shortcut icon" type="XX/ico" href="img/favicon.ico" />
+	<title>Drawings</title>
+	<style type="text/css">
+		* {
+			transition: all 0.4s;
+		}
+		html, body {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Verdana, sens-serif;
+			background-color: #000;
+		}
+		header {
+			width: 100%;
+			height: 50px;
+			box-sizing: border-box;
+			padding: 10px;
+			background-color: #fafafa;
+		}
+		#nav{
+			width: 95%;
+			background-color: #fafafa;
+		}
+		#icon {
+			opacity: 0.8;
+		}
+		#icon:hover {
+			opacity: 1;
+		}
+		.start {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.link-img {
+			border-radius: 5px;
+		}
+		.nav-item {
+			margin-right: 10px;
+		}
+		.nav-link {
+			color: #333;
+			text-decoration: none;
+		}
+		.nav-link:hover {
+			color: #5171ff;
+			text-decoration: underline;
+		}
+		.links {
+			display: flex;
+			align-items: center;
+		}
+		.social-img {
+			width: 15px;
+			opacity: 0.5;
+		}
+		.social-img:hover {
+			opacity: 1;
+		}
+		a {
+			text-decoration: none;
+			color: black;
+		}
+		a:hover {
+			text-decoration: underline;
+			color: #444;
+		}
+
+		#img-container {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		#content {
+			width: 70%;
+			max-width: 800px;
+			margin-top: 80px;
+			border-radius: 5px;
+		}
+
+		#navigate {
+			display: flex;
+			background-color: #fafafa;
+		}
+
+		#prev, #next {
+			margin-left: 10px;
+			cursor: pointer;
+			color: #999;
+		}
+
+		#prev:hover, #next:hover {
+			text-decoration: underline;
+			color: 333;
+		}
+
+		#now {
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div id="nav" class="start">
+			<div class="links">
+				<a class="nav-link nav-item" href="https://wd4.ca/me">
+					<img id="icon" class="link-img" src="img/icon.png" width="30">
+				</a>
+				<span>Drawing</span>
+			</div>
+			<div class="links">
+				<a class="nav-item nav-link" href="https://space.bilibili.com/73027398">
+					<img class="social-img" src="img/bilibili.png" width="15">
+				</a>
+				<a class="nav-link nav-item" href="https://github.com/Darin1123">
+					<img class="social-img" src="img/github.png" width="15">
+				</a>
+				<a class="nav-link nav-item" href="#linkedin">
+					<img class="social-img" src="img/linkedin.png">
+				</a>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div id="navigate">
+			<div id="prev">上一张</div>
+			<div id="next">下一张</div>
+			<div id="now"></div>
+		</div>
+		<div id="img-container">
+			<img id="content" src="img/chenyixun.jpg"/>
+		</div>
+	</main>
+	<script type="text/javascript" src="../lib/jquery.js"></script>
+	<script type="text/javascript">
+		var img_names = ["chenyixun.jpg",
+						"cc.jpg",
+						"heben.jpg",
+						"kc.jpg",
+						"malone.jpg",
+						"messi.jpg",
+						"neo.jpg",
+						"renxianqi.jpg",
+						"shoot.jpg",
+						"two_cats.jpg",
+						"snow.jpg"];
+		var img = $("#content");
+		var now = $("#now");
+		var current = 0;
+
+		now.text("1/"+img_names.length);
+	
+		$("#prev").click(function() {
+			if (current==0) {
+				alert("已经是第一张了");
+			} else {
+				current--;
+				img.attr("src", "img/"+img_names[current]);
+				now.text(current+1+"/"+img_names.length);
+			}
+		});
+		$("#next").click(function() {
+			if (current==img_names.length-1) {
+				alert("已经是最后一张了");
+			} else {
+				current++;
+				img.attr("src", "img/"+img_names[current]);
+				now.text(current+1+"/"+img_names.length);
+			}
+		});
+	</script>
+</body>
+</html>

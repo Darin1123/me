@@ -1,0 +1,513 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>DB Design</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><p>&nbsp;</p><p>&nbsp;</p><h1><a name="database-design" class="md-header-anchor"></a><span>Database Design</span></h1><h4><a name="the-process-of-database-design" class="md-header-anchor"></a><span>The Process of Database Design</span></h4><p><span>(from general to specific)</span></p><ul><li><p><span>Conceptual (general)</span></p><ul><li><span>In the example of </span><strong><span>buyers</span></strong><span> and </span><strong><span>salers</span></strong><span>, we identify that there is a </span><strong><span>CONNECTION</span></strong><span> between the </span><strong><span>buyers</span></strong><span> and the </span><strong><span>users</span></strong><span>.</span></li></ul></li><li><p><span>Logical</span></p><ul><li><span>Then we will first have two tables, </span><strong><span>TABLE buyer</span></strong><span> and </span><strong><span>TABLE saler</span></strong><span>.</span></li></ul></li><li><p><span>Physical (physical)</span></p><ul><li><span>Now </span><strong><span>implement</span></strong><span> it!</span></li></ul></li></ul><h4><a name="data-integrity" class="md-header-anchor"></a><span>Data Integrity</span></h4><p><span>We don&#39;t want repeating, incorrent values, or broken relationships in and between tables. </span></p><ul><li><span>Entity integrity</span></li><li><span>Referential integrity</span></li><li><span>Domain integrity</span></li></ul><h5><a name="-entity-integrity-" class="md-header-anchor"></a><span>{ Entity Integrity }</span></h5><p><span>We should be able to </span><strong><span>identify a unique entity from a table</span></strong><span>. For example, in a user table containing only name and phone number as columns, since people may have the same name, we will not be able to idenfity a specific entity from the table sometimes. </span></p><h5><a name="-referential-integrity-" class="md-header-anchor"></a><span>{ Referential integrity }</span></h5><p><span>It refers to the accuracy and consistency of data within a </span><a href='https://database.guide/what-is-a-relationship/'><span>relationship</span></a><span>.</span></p><p><span>Referential integrity requires that, </span><strong><span>whenever a foreign key value is used it must reference a valid, existing primary key in the parent table.</span></strong></p><h5><a name="-domain-integrity-" class="md-header-anchor"></a><span>{ Domain integrity }</span></h5><p><span>For example, in table contact, we have a column named phone_number, which must contain 10 digits. When we put some information with invlid format, then it violates domain integrity. </span></p><h4><a name="some-terms" class="md-header-anchor"></a><span>Some Terms</span></h4><ul><li><span>Attribute</span></li><li><span>Column</span></li><li><span>Field</span></li></ul><p>&nbsp;</p><ul><li><span>Relation</span></li><li><span>Table</span></li><li><span>File</span></li></ul><p>&nbsp;</p><ul><li><span>Tuple (Row)</span></li><li><span>Row</span></li><li><span>Record</span></li><li><span>Entry</span></li></ul><p>&nbsp;</p><ul><li><span>Null</span></li><li><span>Anomalies ( 反常现象 )</span></li><li><span>Entity</span></li><li><span>Value</span></li><li><span>Schema</span></li><li><span>Normalization</span></li><li><span>Key</span></li></ul><p>&nbsp;</p><ul><li><span>SQL</span></li><li><span>DDL</span></li><li><span>DML</span></li></ul><h4><a name="atomic-value" class="md-header-anchor"></a><span>Atomic Value</span></h4><p><span>&quot;1 thing&quot;</span></p><p><span>&quot;Darin Wang&quot; is not atomic, but &quot;Darin&quot; and &quot;Wang&quot; are atomic.</span></p><h4><a name="relationship" class="md-header-anchor"></a><span>Relationship</span></h4><ul><li><span>&quot;One-to-one&quot;</span></li><li><span>&quot;One-to-many&quot;</span></li><li><span>&quot;Many-to-many&quot;</span></li></ul><h4><a name="parent-tables-and-child-tables" class="md-header-anchor"></a><span>Parent Tables and Child Tables</span></h4><p><span> Foreign key always goes int the children, the primary key goes to parents.</span></p><h4><a name="a-professor-course-example" class="md-header-anchor"></a><span>A Professor-Course Example</span></h4><h5><a name="-11-" class="md-header-anchor"></a><span>{ 1:1 }</span></h5><p><strong><span>professor_course Table</span></strong></p><figure><table><thead><tr><th><span>prof_id</span></th><th><span>name</span></th><th><span>course_id</span></th></tr></thead><tbody><tr><td><span>...</span></td><td><span>...</span></td><td><span>...</span></td></tr></tbody></table></figure><h5><a name="-1n-" class="md-header-anchor"></a><span>{ 1:N }</span></h5><p><span>professor table (parent)</span></p><figure><table><thead><tr><th><span>prof_id</span></th><th><span>name</span></th></tr></thead><tbody><tr><td><span>...</span></td><td><span>...</span></td></tr></tbody></table></figure><p><span>course table (child)</span></p><figure><table><thead><tr><th><span>course_id</span></th><th><span>name</span></th><th><span>prof_id</span></th></tr></thead><tbody><tr><td><span>...</span></td><td><span>...</span></td><td><span>...</span></td></tr></tbody></table></figure><h5><a name="-mn-" class="md-header-anchor"></a><span>{ M:N }</span></h5><p><span>professor table (parent)</span></p><figure><table><thead><tr><th><span>prof_id</span></th><th><span>name</span></th></tr></thead><tbody><tr><td><span>...</span></td><td><span>...</span></td></tr></tbody></table></figure><p><span>course table (parent)</span></p><figure><table><thead><tr><th><span>course_id</span></th><th><span>name</span></th></tr></thead><tbody><tr><td><span>...</span></td><td><span>...</span></td></tr></tbody></table></figure><p><span>professor_course (child)</span></p><figure><table><thead><tr><th><span>prof_id</span></th><th><span>course_id</span></th></tr></thead><tbody><tr><td><span>...</span></td><td><span>...</span></td></tr></tbody></table></figure><h4><a name="keys" class="md-header-anchor"></a><span>Keys</span></h4><p><span>Three  rules</span></p><ul><li><span>unique</span></li><li><span>never changing</span></li><li><span>never null</span></li></ul><h5><a name="index-and-key" class="md-header-anchor"></a><span>Index and key</span></h5><ul><li><span>superkey</span></li></ul><ul><li><span>candicate key</span></li></ul><p>&nbsp;</p><p><span>primary key (selected superkey)</span></p><p><span>alternate key (those not selected) can be set to index</span></p><p>&nbsp;</p><p><strong><span>the types of primary keys</span></strong></p><ul><li><p><span>surrogate</span></p></li><li><p><span>natural</span></p><ul><li><span>things naturally in the table. </span></li></ul></li></ul><h4><a name="foreign-key" class="md-header-anchor"></a><span>Foreign Key</span></h4><p><span>It is a reference of a primary key.</span></p><h5><a name="foreign-key-constraints" class="md-header-anchor"></a><span>Foreign Key Constraints</span></h5><ul><li><code>ON DELETE</code></li></ul><ul><li><code>ON UPDATE</code></li></ul><p><span>when </span><code>XXX</code><span>, we want the children to do something. </span></p><ul><li><code>RESTRICT</code><span> child and parent always stay alive together. (to kill parent, kill child first.) (if it is the update case, stop parent from updating)</span></li><li><code>CASCADE</code><span> after killing parent, the child is killed as well. (if it is the update case, update the child as well)</span></li><li><code>SET NULL</code><span> after killing parent, set the child to null. (if it is the update case, set the child to null)</span></li></ul><h4><a name="simple-key-composite-key-compound-key" class="md-header-anchor"></a><span>Simple Key, Composite Key, Compound Key</span></h4><p><strong><span>Simple key</span></strong><span> - one column</span></p><p><strong><span>Composite key</span></strong><span> - multiple columns</span></p><ul><li><span>first_name + middle_name + last_name</span></li></ul><h4><a name="entity-relationship-modelling" class="md-header-anchor"></a><span>Entity Relationship Modelling</span></h4><h4><a name="cardinality" class="md-header-anchor"></a><span>Cardinality</span></h4><h4><a name="modality" class="md-header-anchor"></a><span>Modality</span></h4><h4><a name="database-normalization" class="md-header-anchor"></a><span>Database Normalization</span></h4><p><span>It is a process structuring a </span><a href='https://en.wikipedia.org/wiki/Relational_database'><span>relational database</span></a><span> in accordance with a series of so-called normal forms in order to reduce redundancy and improve data integrity.</span></p><ul><li><span>1st NF</span></li></ul><ul><li><span>2nd NF</span></li></ul><ul><li><span>3rd NF</span></li></ul><p><span>To get 2nd normal form, we need to get 1st normal form, to get a 3rd normal form,  get a 2nd normal form first. A 3rd normal form is also a 1st and a second normal form. </span></p><h4><a name="-first-normal-form-" class="md-header-anchor"></a><span>{ First Normal Form }</span></h4><figure><table><thead><tr><th><span>user_id</span></th><th><span>first_name</span></th><th><span>last_name</span></th><th><span>email</span></th><th><span>address</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>The address column causes a problem because it is not atomic.</span></p><figure><table><thead><tr><th><span>user_id</span></th><th><span>first_name</span></th><th><span>last_name</span></th><th><span>email</span></th></tr></thead><tbody><tr><td><span>5</span></td><td><span>Caleb</span></td><td><span>Curry</span></td><td><a href='mailto:caleb@xxx.com' target='_blank' class='url'>caleb@xxx.com</a><span>  </span><a href='mailto:caleb@asd.com' target='_blank' class='url'>caleb@asd.com</a></td></tr></tbody></table></figure><p><span>The email column is a problem.</span></p><figure><table><thead><tr><th><span>user-id</span></th><th><span>first_name</span></th><th><span>last_name</span></th><th><span>email</span></th></tr></thead><tbody><tr><td><span>5</span></td><td><span>Caleb</span></td><td><span>Curry</span></td><td><a href='mailto:caleb@xxx.com' target='_blank' class='url'>caleb@xxx.com</a></td></tr><tr><td><span>5</span></td><td><span>Caleb</span></td><td><span>Curry</span></td><td><a href='mailto:caleb@asd.com' target='_blank' class='url'>caleb@asd.com</a></td></tr></tbody></table></figure><p><span>The repeated information is a problem.</span></p><p><strong><span>Solution</span></strong></p><p><span>User table</span></p><figure><table><thead><tr><th><span>user_id</span></th><th><span>first_name</span></th><th><span>last_name</span></th></tr></thead><tbody><tr><td><span>...</span></td><td><span>...</span></td><td><span>...</span></td></tr></tbody></table></figure><p><span>Email table</span></p><figure><table><thead><tr><th><span>email_id</span></th><th><span>email_address</span></th><th><span>user_id</span></th></tr></thead><tbody><tr><td><span>... </span></td><td><span>...</span></td><td><span>...</span></td></tr></tbody></table></figure><h4><a name="-second-normal-from-" class="md-header-anchor"></a><span>{ Second Normal From }</span></h4><p><span>A database is in second normal form if it satisfies the following conditions: </span></p><ul><li><span>It is in first normal form</span></li><li><span>All non-key attributes are fully functional dependent on the primary key</span></li></ul><figure><table><thead><tr><th><span>author_id</span></th><th><span>fn</span></th><th><span>ln</span></th><th><span>birthday</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><figure><table><thead><tr><th><span>book_id</span></th><th><span>isbn</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><figure><table><thead><tr><th><span>book_id</span></th><th><span>author_id</span></th><th><span>author_position</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4><a name="-third-normal-form-" class="md-header-anchor"></a><span>{ Third Normal Form }</span></h4><p><strong><span>Definition</span></strong></p><ul><li><span>The </span><a href='https://en.wikipedia.org/wiki/Relation_(database)'><span>relation</span></a><span> R (table) is in </span><a href='https://en.wikipedia.org/wiki/Second_normal_form'><span>second normal form</span></a><span> (2NF).</span></li><li><span>Every non-prime attribute of R is non-transitively dependent on every key of R.</span></li></ul><p><strong><span>Example</span></strong></p><p><span>reivew table</span></p><figure><table><thead><tr><th><span>review_id</span></th><th><span>content</span></th><th><span>star</span></th><th><span>star_meaning</span></th><th><span>user_id</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>In this case, </span><strong><em><span>start_meaning</span></em></strong><span> depends on </span><strong><em><span>star</span></em></strong><span> and </span><strong><em><span>star</span></em></strong><span> depends on </span><strong><em><span>review_id</span></em></strong><span>.</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n636" cid="n636" mdtype="math_block">
+			
+		<div class="md-rawblock-container md-math-container" contenteditable="false" tabindex="-1">
+						<div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-4-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="37.269ex" height="2.409ex" viewBox="0 -777 16046.1 1037.3" role="img" focusable="false" style="vertical-align: -0.605ex; max-width: 100%;"><defs><path stroke-width="0" id="E83-MJMAIN-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path stroke-width="0" id="E83-MJMAIN-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path stroke-width="0" id="E83-MJMAIN-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path stroke-width="0" id="E83-MJMAIN-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path><path stroke-width="0" id="E83-MJMAIN-5F" d="M0 -62V-25H499V-62H0Z"></path><path stroke-width="0" id="E83-MJMAIN-6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path stroke-width="0" id="E83-MJMAIN-65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z"></path><path stroke-width="0" id="E83-MJMAIN-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path stroke-width="0" id="E83-MJMAIN-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path stroke-width="0" id="E83-MJMAIN-67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z"></path><path stroke-width="0" id="E83-MJMAIN-27F6" d="M84 237T84 250T98 270H1444Q1328 357 1301 493Q1301 494 1301 496T1300 499Q1300 511 1317 511H1320Q1329 511 1332 510T1338 506T1341 497T1344 481T1352 456Q1374 389 1425 336T1544 261Q1553 258 1553 250Q1553 244 1548 241T1524 231T1486 212Q1445 186 1415 152T1370 85T1349 35T1341 4Q1339 -6 1336 -8T1320 -11Q1300 -11 1300 0Q1300 7 1305 25Q1337 151 1444 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E83-MJMAIN-76" d="M338 431Q344 429 422 429Q479 429 503 431H508V385H497Q439 381 423 345Q421 341 356 172T288 -2Q283 -11 263 -11Q244 -11 239 -2Q99 359 98 364Q93 378 82 381T43 385H19V431H25L33 430Q41 430 53 430T79 430T104 429T122 428Q217 428 232 431H240V385H226Q187 384 184 370Q184 366 235 234L286 102L377 341V349Q377 363 367 372T349 383T335 385H331V431H338Z"></path><path stroke-width="0" id="E83-MJMAIN-77" d="M90 368Q84 378 76 380T40 385H18V431H24L43 430Q62 430 84 429T116 428Q206 428 221 431H229V385H215Q177 383 177 368Q177 367 221 239L265 113L339 328L333 345Q323 374 316 379Q308 384 278 385H258V431H264Q270 428 348 428Q439 428 454 431H461V385H452Q404 385 404 369Q404 366 418 324T449 234T481 143L496 100L537 219Q579 341 579 347Q579 363 564 373T530 385H522V431H529Q541 428 624 428Q692 428 698 431H703V385H697Q696 385 691 385T682 384Q635 377 619 334L559 161Q546 124 528 71Q508 12 503 1T487 -11H479Q460 -11 456 -4Q455 -3 407 133L361 267Q359 263 266 -4Q261 -11 243 -11H238Q225 -11 220 -3L90 368Z"></path><path stroke-width="0" id="E83-MJMAIN-64" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E83-MJMAIN-73"></use><use xlink:href="#E83-MJMAIN-74" x="394" y="0"></use><use xlink:href="#E83-MJMAIN-61" x="783" y="0"></use><use xlink:href="#E83-MJMAIN-72" x="1283" y="0"></use><use xlink:href="#E83-MJMAIN-5F" x="1675" y="0"></use><use xlink:href="#E83-MJMAIN-6D" x="2175" y="0"></use><use xlink:href="#E83-MJMAIN-65" x="3008" y="0"></use><use xlink:href="#E83-MJMAIN-61" x="3452" y="0"></use><use xlink:href="#E83-MJMAIN-6E" x="3952" y="0"></use><use xlink:href="#E83-MJMAIN-69" x="4508" y="0"></use><use xlink:href="#E83-MJMAIN-6E" x="4786" y="0"></use><use xlink:href="#E83-MJMAIN-67" x="5342" y="0"></use><use xlink:href="#E83-MJMAIN-27F6" x="6119" y="0"></use><g transform="translate(8035,0)"><use xlink:href="#E83-MJMAIN-73"></use><use xlink:href="#E83-MJMAIN-74" x="394" y="0"></use><use xlink:href="#E83-MJMAIN-61" x="783" y="0"></use><use xlink:href="#E83-MJMAIN-72" x="1283" y="0"></use></g><use xlink:href="#E83-MJMAIN-27F6" x="9988" y="0"></use><g transform="translate(11904,0)"><use xlink:href="#E83-MJMAIN-72"></use><use xlink:href="#E83-MJMAIN-65" x="392" y="0"></use><use xlink:href="#E83-MJMAIN-76" x="836" y="0"></use><use xlink:href="#E83-MJMAIN-69" x="1364" y="0"></use><use xlink:href="#E83-MJMAIN-65" x="1642" y="0"></use><use xlink:href="#E83-MJMAIN-77" x="2086" y="0"></use><use xlink:href="#E83-MJMAIN-5F" x="2808" y="0"></use><use xlink:href="#E83-MJMAIN-69" x="3308" y="0"></use><use xlink:href="#E83-MJMAIN-64" x="3586" y="0"></use></g></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-4">\text{star_meaning}\longrightarrow\text{star}\longrightarrow\text{review_id}</script>
+					</div></div><p><span>new review table</span></p><figure><table><thead><tr><th><span>review_id</span></th><th><span>content</span></th><th><span>star_id</span></th><th><span>user_id</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>start table</span></p><figure><table><thead><tr><th><span>star_id</span></th><th><span>star</span></th><th><span>star_meaning</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p>&nbsp;</p></div>
+</body>
+</html>

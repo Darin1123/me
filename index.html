@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="apple-mobile-web-app-title" content="Darin">
+	<link href="img/icon.png" rel="apple-touch-icon-precomposed" sizes="114x114" />
+	<link href="img/favicon.ico" rel="shortcut icon" type="XX/ico" />
+	<title>Darin</title>
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">* {
+			transition: all 0.4s;
+		}
+		html, body {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Verdana, sens-serif;
+			background-color: #fafafa;
+		}
+		header {
+			width: 100%;
+			height: 40px;
+			box-sizing: border-box;
+		}
+		main {
+			width: 100%;
+			margin: 0 auto;
+		}
+		#nav{
+			width: 95%;
+			margin: 10px;
+		}
+		#icon {
+			opacity: 0.8;
+		}
+		#icon:hover {
+			opacity: 1;
+		}
+		.start {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.link-img {
+			border-radius: 5px;
+		}
+		.nav-item {
+			margin-right: 10px;
+		}
+		.nav-link {
+			color: #333;
+			text-decoration: none;
+		}
+		.nav-link:hover {
+			color: #5171ff;
+			text-decoration: underline;
+		}
+		.section {
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			padding-bottom: 40px;
+			margin-bottom: 20px;
+			background-color: white;
+		}
+		.section-text {
+			text-align: center;
+		}
+		.section-link {
+			text-decoration: none;
+			color: #5171ff;
+			margin-bottom: 20px;
+		}
+		.section-link:hover {
+			text-decoration: underline;
+		}
+		.section-title {
+			display: block;
+		}
+		.white-text {
+			color: white;
+		}
+		.gray-text {
+			color: #444;
+		}
+		.block {
+			display: block;
+		}
+		.section-b {
+			background-color: black;
+		}
+		.deck {
+			margin-top: 20px;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-around;
+			flex-wrap: wrap;
+		}
+		.display-img {
+			border-radius: 5px;
+			opacity: 0.3;
+		}
+		.display-img:hover {
+			opacity: 1;
+		}
+		#me {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		#me:hover {
+			text-decoration: none;
+			font-size: 2em;
+			background-image: linear-gradient(135deg, #ff4100, #08f);
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+		#home {
+			height: 200px;
+		}
+		.social-img {
+			width: 15px;
+			opacity: 0.5;
+		}
+		.social-img:hover {
+			opacity: 1;
+		}
+		#home-img {
+			border-radius: 5px;
+			height: 100px;
+			box-shadow: 10px 10px 5px #666;
+		}
+		#home-img:hover {
+			height: 120px;
+		}
+		.card {
+			height: 200px;
+			width: 150px;
+		}
+		.card .card-img {
+			height: 100px;
+			z-index: 1;
+			opacity: 0;
+			overflow: hidden;
+			border-radius: 5px;
+		}
+		.card .card-text {
+			height: 100px;
+			text-align: center;
+			z-index: 2;
+			transform: translateY(-80%); 
+		}
+		.card:hover .card-text {
+			transform: translateY(0); 
+		}
+		.card:hover .card-img {
+			transform: translateY(0); 
+			opacity: 1;
+		}
+		.link {
+			text-decoration: none;
+			color: black;
+		}
+		.link:hover {
+			text-decoration: underline;
+			color: #444;
+		}
+		.sub-container {
+			width: 100%;
+			max-width: 1080px;
+		}
+		.links {
+			display: flex;
+			align-items: center;
+		}
+
+		#diary {
+		    color: #fafafa;
+		}
+	</style>
+</head>
+<body>
+<header>
+<div class="start" id="nav">
+<div class="links"><a class="nav-link nav-item" href="#"><img class="link-img" id="icon" src="img/icon.png" width="30" /> </a> <a class="nav-link nav-item" href="#">Home</a> <a class="nav-link nav-item" href="#drawings">Drawing</a> <a class="nav-link nav-item" href="#coding">Coding</a> <a id="diary" class="nav-link nav-item" href="/me/diary">Diary</a></div>
+
+<div class="links"><a class="nav-item nav-link" href="https://space.bilibili.com/73027398"><img class="social-img" src="img/bilibili.png" width="15" /> </a> <a class="nav-link nav-item" href="https://github.com/Darin1123"> <img class="social-img" src="img/github.png" width="15" /> </a> <a class="nav-link nav-item" href="https://www.linkedin.com/in/zefeng-wang-7b0770186/"> <img class="social-img" src="img/linkedin.png" /> </a></div>
+</div>
+</header>
+
+<main>
+<div class="section" id="home">
+<div class="section-text">
+<h2>About <span id="me">me</span></h2>
+
+<p class="gray-text">I am a 4-th Software Engineering student @ McMaster University.</p>
+</div>
+<img id="home-img" src="img/me-square.jpg" /></div>
+
+<div class="section section-b white-text" id="drawings">
+<div class="sub-container">
+<div class="section-text">
+<h2>Drawing</h2>
+
+<p>I am a big fan of drawing.</p>
+<a class="section-link" href="drawing/index.html">See More</a></div>
+
+<div class="deck"><img class="display-img" height="150" src="drawing/img/heben.jpg" /> <img class="display-img" height="150" src="drawing/img/renxianqi.jpg" /> <img class="display-img" height="150" src="drawing/img/chenyixun.jpg" /></div>
+</div>
+</div>
+
+<div class="section" id="coding">
+<div class="sub-container">
+<div class="section-text">
+<h2>Coding</h2>
+
+<p>I enjoy coding.</p>
+</div>
+
+<div class="deck">
+<div class="card">
+<div class="card-img"><a class="link" href="java/"><img src="img/java.jpg" width="150" /> </a></div>
+
+<div class="card-text">
+<h4>Java Notes</h4>
+
+<p class="gray-text">I believe it is the first langauge that I need to be master of.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img"><a class="link" href="ml_notes/"><img src="img/svm.jpg" width="150" /> </a></div>
+
+<div class="card-text">
+<h4>SVM Notes</h4>
+
+<p class="gray-text">The math behind it is beautiful.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img"><a class="link" href="https://wd4.ca"><img src="img/bookstore.png" width="150" /> </a></div>
+
+<div class="card-text">
+<h4>Bookstore Finder</h4>
+
+<p class="gray-text">A web course project.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img"><a class="link" href="projects/"><img src="img/schedule_generator.png" width="150" /> </a></div>
+
+<div class="card-text">
+<h4>Schedule Generator</h4>
+
+<p class="gray-text">A program generates schedules.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img"><a class="link" href="db_design_notes/"><img src="img/databasedesign.jpg" width="150" /> </a></div>
+
+<div class="card-text">
+<h4>DB Design Notes</h4>
+
+<p class="gray-text">Some notes on Database Design.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+<!--<div class="section" id="home">-->
+<!--</div>-->
+</main>
+
+<footer></footer>
+<script type="text/javascript" src="lib/jquery.js"></script><!-- <script type="text/javascript" src="lib/jquery-ui/jquery-ui.js"></script> --><script type="text/javascript">
+// 		$("#me").click(function() {
+// 			$("#home-img").fadeIn("slow");
+// 		});
+
+		// $("#y").hover(function() {
+		// 	$("#year").css("color", "#f30");
+		// });
+		// $("#e").hover(function() {
+		// 	$("#year").css("color", "#f90");
+		// });
+		// $("#a").hover(function() {
+		// 	$("#year").css("color", "#f90");
+		// });
+		// $("#r").hover(function() {
+		// 	$("#year").css("color", "#f30");
+		// });
+
+	// 	$(document).scroll(function() {
+	// 		var scroH = $(document).scrollTop();
+	// 		if(scroH>5){  
+ // 				$("#new-year").animate({
+ // 					"height": 200, 
+ // 					"background-color": "red",
+ // 					"color": "yellow"}
+ // 					, 100);
+	//         }
+	// 	});
+	</script></body>
+</html>
