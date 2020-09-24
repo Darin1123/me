@@ -114,10 +114,11 @@ main {
 #home-img {
     border-radius: 5px;
     height: 100px;
-    box-shadow: 10px 10px 5px #666;
+    cursor: pointer;
 }
 #home-img:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 8px 8px 4px #888;
 }
 .card {
     height: 240px;
