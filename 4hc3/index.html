@@ -3,8 +3,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-title" content="Darin">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon.png"/>
-    <link rel="shortcut icon" type="XX/ico" href="img/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/icon.png"/>
+    <link rel="shortcut icon" type="XX/ico" href="../img/favicon.ico" />
     <title>4HC3 Assignments</title>
     <style type="text/css">
         * {
@@ -85,7 +85,7 @@
         }
 
         #assignments {
-            width: 100%;
+            width: calc(100% - 40px);
             max-width: 1080px;
             margin: 0 auto;
             display: flex;
@@ -95,6 +95,24 @@
 
         #assignments a {
             color: #5171ff;
+        }
+
+        #instruction {
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid rgb(162, 96, 11);
+            border-radius: 5px;
+            background-color: rgb(255, 235, 156);
+            color: rgb(162, 96, 11);
+        }
+
+        #instruction:hover {
+            transform: translateY(-5px);
+            box-shadow: 5px 5px 4px;
+        }
+
+        #assignments-links {
+            list-style-type: square;
         }
     </style>
 </head>
@@ -122,8 +140,14 @@
 </header>
 <main>
     <div id="assignments">
-        <a class="nav-link" href="assignment_2.pdf">Assignment 2</a>
-        <a class="nav-link" href="assignment_2_solns.pdf">Assignment 2 Solution</a>
+        <div id="instruction">
+            <p><b>Instruction</b></p>
+            <p>These files are from term 2019 fall.<br/> Please download/view both question file and solution file, just in case questions are different.</p>
+        </div>
+        <ul id="assignments-links">
+            <li><a class="nav-link" href="assignment_2.pdf">Assignment 2</a></li>
+            <li><a class="nav-link" href="assignment_2_solns.pdf">Assignment 2 Solution</a></li>
+        </ul>
     </div>
 </main>
 <script type="text/javascript" src="../lib/jquery.js"></script>
