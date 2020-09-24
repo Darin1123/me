@@ -111,8 +111,42 @@
             box-shadow: 5px 5px 4px;
         }
 
-        #assignments-links {
-            list-style-type: square;
+        .assignments-links {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .assignments-links:hover {
+            transform: translateY(-5px);
+            box-shadow: 5px 5px 4px #999;
+        }
+
+        #tips {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 20px;
+            color: #888;
+        }
+
+        #tips:hover {
+            transform: translateY(-5px);
+            box-shadow: 5px 5px 4px #999;
+        }
+
+        .title {
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .pointer {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -140,7 +174,7 @@
 </header>
 <main>
     <div id="assignments">
-        <div id="instruction">
+        <div id="instruction" class="pointer">
             <p><b>Instruction</b></p>
             <p>
                 These files are from term 2019 fall.<br/>
@@ -148,10 +182,14 @@
                 ⚠️ <b>[WARNING] Don't share this link, or bad things may happen.</b>⚠️
             </p>
         </div>
-        <ul id="assignments-links">
-            <li><a class="nav-link" href="assignment_2.pdf">Assignment 2</a></li>
-            <li><a class="nav-link" href="assignment_2_solns.pdf">Assignment 2 Solution</a></li>
-        </ul>
+        <div id="tips" class="pointer">
+            <p>💡 Write down how you get the final result. <b>Steps worth marks</b>.</p>
+        </div>
+        <div class="assignments-links pointer">
+            <span class="title">Assignment 2</span><br/><br/>
+            <a class="nav-link" href="assignment_2.pdf">- Assignment 2</a><br/>
+            <a class="nav-link" href="assignment_2_solns.pdf">- Assignment 2 Solution</a>
+        </div>
     </div>
 </main>
 <script type="text/javascript" src="../lib/jquery.js"></script>
