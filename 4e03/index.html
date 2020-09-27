@@ -112,7 +112,7 @@
         }
 
         #warning {
-            /*cursor: pointer;*/
+            cursor: pointer;
             text-align: center;
             border: 1px solid rgb(162, 96, 11);
             border-radius: 5px;
@@ -122,10 +122,10 @@
             font-size: small;
         }
 
-        /*#warning:hover {*/
-        /*    transform: translateY(-5px);*/
-        /*    box-shadow: 0px 5px 4px;*/
-        /*}*/
+        #warning:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 4px;
+        }
 
         .assignments-links {
             background-color: #fff;
@@ -143,6 +143,7 @@
         }
 
         .tip {
+            cursor: pointer;
             max-width: 1080px;
             background-color: #fff;
             border: 1px solid #eee;
@@ -154,10 +155,10 @@
             font-size: small;
         }
 
-        /*.tip:hover {*/
-        /*    transform: translateY(-5px);*/
-        /*    box-shadow: 0px 5px 4px #999;*/
-        /*}*/
+        .tip:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 4px #999;
+        }
 
         .title {
             font-size: large;
@@ -250,5 +251,13 @@
     </div>
 </main>
 <script type="text/javascript" src="../lib/jquery.js"></script>
+<script>
+    $("#warning").on("click", function () {
+        $(this).css({"display": "none"})
+    });
+    $(".tip").on("click", function () {
+        $(this).css({"display": "none"})
+    });
+</script>
 </body>
 </html>
