@@ -27,7 +27,7 @@ nav #title:hover {
     color: #bbb
 }
 
-.container {
+#container {
     position: relative;
     width: 100%;
     max-width: 1080px;
@@ -39,24 +39,24 @@ nav #title:hover {
     align-items: center;
 }
 
-.container #control-container {
+#container #control-container {
     display: flex;
     align-items: center;
     /*border: 1px red solid;*/
     margin-bottom: 20px;
 }
 
-.container #control-container .text-button {
+#container #control-container .text-button {
     margin: 0 10px 0 10px;
     cursor: pointer;
 }
 
-.container #control-container .text-button:hover {
+#container #control-container .text-button:hover {
     text-decoration: underline;
     color: #888;
 }
 
-.container #card {
+#container #card {
     position: relative;
     width: 400px;
     height: 340px;
@@ -69,11 +69,7 @@ nav #title:hover {
     transition: 0.4s ease-in-out;
 }
 
-/*.container .card:hover {*/
-/*    height: 410px;*/
-/*}*/
-
-.container #card #img-box {
+#container #card #img-box {
     cursor: pointer;
     position: relative;
     width: 360px;
@@ -83,17 +79,17 @@ nav #title:hover {
     z-index: 1;
 }
 
-.container #card #img-box img {
+#container #card #img-box img {
     border-radius: 5px;
     width: 100%;
 }
 
-.container #card:hover #img-box {
+#container #card:hover #img-box {
     top: -45px;
     box-shadow: 0 5px 202px rgba(0, 0, 0, 0.1);
 }
 
-.container #card #content {
+#container #card #content {
     display: flex;
     text-align: center;
     align-items: center;
@@ -107,13 +103,15 @@ nav #title:hover {
 }
 
 #mock {
+    padding-left: 20px;
+    padding-right: 20px;
     cursor: pointer;
     /*visibility: hidden;*/
     position: absolute;
-    width: 100%;
+    width: calc(100% - 40px);
     height: 0;
     overflow: hidden;
-    background-color: #ddd;
+    /*background-color: #444;*/
     /*border: red 1px solid;*/
     top: 0;
     display: flex;
@@ -121,6 +119,28 @@ nav #title:hover {
     align-items: center;
     justify-content: center;
     z-index: 2;
+    font-size: 150%;
+}
+
+#mock h2, p {
+    opacity: 1;
+}
+
+@media only screen and (max-device-width: 768px) {
+    .container #control-container {
+        margin-bottom: 40px;
+    }
+
+    .container #card {
+        width: 320px;
+        height: 280px;
+        padding: 0;
+    }
+
+    .container #card #img-box {
+        width: 320px;
+        height: 320px;
+    }
 }
 
 /*.container .card:hover .content {*/
