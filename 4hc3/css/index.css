@@ -132,13 +132,13 @@ nav #title:hover {
     }
 
     .container #card {
-        width: 320px;
+        width: 280px;
         height: 280px;
         padding: 0;
     }
 
     .container #card #img-box {
-        width: 320px;
+        width: 280px;
         height: 320px;
     }
 }
