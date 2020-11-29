@@ -3,6 +3,7 @@ window.onload = function () {
     let context = canvas.getContext("2d");
     let user_hits = 0;  // keep track of the number of times the player ball collides with enemy
     let border_hits = 0;
+    const default_velocity = 10;
 
     function random_y(v) {
         return (600 - 2 * v) * Math.random() + v;
@@ -39,8 +40,11 @@ window.onload = function () {
         boundary_check() {
             if (this.role === 'enemy' && (this.x - this.radius) + this.vx < 0) {
                 border_hits++;
+                this.radius = Math.random()*40+25;
                 this.x = 1200 - this.radius;
                 this.y = random_y(this.radius);
+                this.vx = -1*(8 * Math.random() + 8);
+                this.vy = Math.random()*8+8;
             }
 
             if ((this.y + this.radius) + this.vy > canvas.height ||
@@ -55,49 +59,22 @@ window.onload = function () {
     }
 
     let player_ball = new Ball(25, 250, 0, 0, 0, 0, 25, 'green', 'player');
-    let enemy_ball = new Ball(canvas.width - 50, random_y(25), -8, 5 * Math.random() + 3, -1, -1, 25, 'red', 'enemy');
+    let enemy_ball = new Ball(canvas.width - 50, random_y(25), -1*(8 * Math.random() + 8), 8 * Math.random() + 8, -1, -1, 25, 'red', 'enemy');
 
-    // change the direction of the ball based on the arrow key input
-    // document.onkeydown = function (e) {
-    //     console.log(e.code);
-    //     if (e.code == "S") player_ball.vy = 5;
-    //     else if (e.code == "W") player_ball.vy = -5;
-    //     else if (e.code == "D") player_ball.vx = 5;
-    //     else if (e.code == "A") player_ball.vx = -5;
-    // };
-    //
-    // // when the player releases a key, stop the movement in that direction
-    // document.onkeyup = function (e) {
-    //     if (e.code == "S") player_ball.vy = 0;
-    //     else if (e.code == "W") player_ball.vy = 0;
-    //     else if (e.code == "D") player_ball.vx = 0;
-    //     else if (e.code == "A") player_ball.vx = 0;
-    // };
 
-    let last_x = 0;
-    let last_y = 0;
-
-    /**
-     * touch screen event
-     */
-    function handleStart(e) {
-        last_x = e.touches[0].pageX;
-        last_y = e.touches[0].pageY;
-    }
-
-    function handleMove(e) {
-        let touch_x = e.touches[0].pageX;
-        let touch_y = e.touches[0].pageY;
+    function move_player(touch_x, touch_y) {
         let user_x = player_ball.x;
         let user_y = player_ball.y;
         let delta_x = Math.abs(touch_x - user_x);
         let delta_y = Math.abs(touch_y - user_y);
         let distance = Math.sqrt(delta_x*delta_x + delta_y*delta_y);
+        console.log(distance);
         let user_velocity;
         if (distance > 30) {
-            user_velocity = 10;
+            user_velocity = default_velocity;
         } else {
-            user_velocity = distance*distance/10;
+            // user_velocity = distance*distance/10;
+            user_velocity = 0;
         }
         let x_direction = touch_x > player_ball.x; // true -> right; false -> left
         let y_direction = touch_y > player_ball.y; // true -> up; false -> down
@@ -123,7 +100,21 @@ window.onload = function () {
                 player_ball.vy = -1*vy;
             }
         }
+    }
 
+    /**
+     * touch screen event
+     */
+    function handleStart(e) {
+        let touch_x = e.touches[0].pageX;
+        let touch_y = e.touches[0].pageY;
+        move_player(touch_x, touch_y);
+    }
+
+    function handleMove(e) {
+        let touch_x = e.touches[0].pageX;
+        let touch_y = e.touches[0].pageY;
+        move_player(touch_x, touch_y);
     }
 
     function handleEnd(e) {
@@ -146,7 +137,7 @@ window.onload = function () {
             user_hits++;
             // enemy_ball.x = 600 - enemy_ball.radius;
             // enemy_ball.y = (600 - 2 * this.radius) * Math.random() + this.radius;
-            enemy_ball = new Ball(canvas.width - 50, random_y(25), -8, 3 * Math.random() + 5, -1, -1, 25, 'red', 'enemy');
+            enemy_ball = new Ball(canvas.width - 50, random_y(25), -8, 20 * Math.random() + 5, -1, -1, 25, 'red', 'enemy');
 
         }
 
