@@ -3,7 +3,6 @@ window.onload = function () {
     let context = canvas.getContext("2d");
     let user_hits = 0;  // keep track of the number of times the player ball collides with enemy
     let border_hits = 0;
-    const threshold = 20;
 
     function random_y(v) {
         return (600 - 2 * v) * Math.random() + v;
@@ -87,21 +86,44 @@ window.onload = function () {
     }
 
     function handleMove(e) {
-        if (last_x - e.touches[0].pageX > threshold) { // move right
-            console.log("move right");
-            player_ball.vx = -5;
-        } else if (last_x - e.touches[0].pageX <= (-threshold)) { // move left
-            console.log("move left");
-            player_ball.vx = 5;
+        let touch_x = e.touches[0].pageX;
+        let touch_y = e.touches[0].pageY;
+        let user_x = player_ball.x;
+        let user_y = player_ball.y;
+        let delta_x = Math.abs(touch_x - user_x);
+        let delta_y = Math.abs(touch_y - user_y);
+        let distance = Math.sqrt(delta_x*delta_x + delta_y*delta_y);
+        let user_velocity;
+        if (distance > 30) {
+            user_velocity = 10;
+        } else {
+            user_velocity = distance*distance/10;
+        }
+        let x_direction = touch_x > player_ball.x; // true -> right; false -> left
+        let y_direction = touch_y > player_ball.y; // true -> up; false -> down
+        if (delta_y>0 && delta_x===0) {
+            if (y_direction) {
+                player_ball.vy = -1*user_velocity;
+            } else {
+                player_ball.vy = user_velocity;
+            }
+            player_ball.vx = 0;
+        } else {
+            let ratio = delta_y/delta_x;
+            let vx = Math.sqrt(user_velocity*user_velocity/(1+ratio*ratio));
+            let vy = ratio*vx;
+            if (x_direction) {
+                player_ball.vx = vx;
+            } else {
+                player_ball.vx = -1*vx;
+            }
+            if (y_direction) {
+                player_ball.vy = vy;
+            } else {
+                player_ball.vy = -1*vy;
+            }
         }
 
-        if (last_y - e.touches[0].pageY > threshold) { // move up
-            console.log("move up")
-            player_ball.vy = -5;
-        } else if (last_y - e.touches[0].pageY <= (-threshold)) { // move down
-            console.log("move down")
-            player_ball.vy = 5;
-        }
     }
 
     function handleEnd(e) {
