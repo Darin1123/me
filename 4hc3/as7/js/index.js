@@ -4,10 +4,26 @@ window.onload = function () {
     let user_hits = 0;  // keep track of the number of times the player ball collides with enemy
     let border_hits = 0;
     const default_velocity = 10;
+    let player_color = 'green';
 
     function random_y(v) {
         return (600 - 2 * v) * Math.random() + v;
     }
+
+    function set_color(color) {
+        console.log(color);
+        let x = player_ball.x;
+        let y = player_ball.y;
+        player_color = color;
+        player_ball = new Ball(x, y, 0, 0, 0, 0, 25, player_color, 'player');
+
+    }
+
+    document.getElementById("red").onclick = function() { set_color('red'); };
+    document.getElementById("yellow").onclick = function() { set_color('yellow'); };
+    document.getElementById("blue").onclick = function() { set_color('blue'); };
+    document.getElementById("green").onclick = function() { set_color('green'); };
+
 
     class Ball {
         constructor(x, y, vx, vy, bvx, bvy, radius, color, role) {
@@ -58,7 +74,7 @@ window.onload = function () {
         }
     }
 
-    let player_ball = new Ball(25, 250, 0, 0, 0, 0, 25, 'green', 'player');
+    let player_ball = new Ball(25, 250, 0, 0, 0, 0, 25, player_color, 'player');
     let enemy_ball = new Ball(canvas.width - 50, random_y(25), -1*(8 * Math.random() + 8), 8 * Math.random() + 8, -1, -1, 25, 'red', 'enemy');
 
 
@@ -66,11 +82,11 @@ window.onload = function () {
         let user_x = player_ball.x;
         let user_y = player_ball.y;
         let delta_x = Math.abs(touch_x - user_x);
-        let delta_y = Math.abs(touch_y - user_y);
+        let delta_y = Math.abs(touch_y - user_y-37.5);
         let distance = Math.sqrt(delta_x*delta_x + delta_y*delta_y);
         console.log(distance);
         let user_velocity;
-        if (distance > 30) {
+        if (distance > 40) {
             user_velocity = default_velocity;
         } else {
             // user_velocity = distance*distance/10;
@@ -159,8 +175,8 @@ window.onload = function () {
 
         // draw the user_hits to the screen in the top-left corner
         context.font = "20px serif";
-        context.fillText("User hits: " + user_hits, 5, 20);
-        context.fillText("Border hits: " + border_hits, 5, 40);
+        context.fillText("Collision: " + user_hits, 5, 20);
+        context.fillText("Score: " + border_hits, 5, 40);
     }
 
     // game loop runs every 30 milliseconds
