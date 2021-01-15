@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-title" content="Darin">
+	<link href="../img/icon.png" rel="apple-touch-icon-precomposed" sizes="114x114" />
+	<link href="../img/favicon.ico" rel="shortcut icon" type="XX/ico" />
+	<title>Darin</title>
+    <script type="text/javascript" src="../lib/jquery.js"></script>
+    <link href="../index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<header>
+    <div class="start" id="nav">
+        <div class="links">
+            <a class="nav-link nav-item" href="#">
+                <img class="link-img" id="icon" src="../img/icon.png" width="30" />
+            </a>
+            <span class="nav-link nav-item" id="drawing">绘画</span>
+            <span class="nav-link nav-item" id="coding">编程</span>
+<!--            <span id="diary" class="nav-link nav-item" href="/me/diary">Diary</span>-->
+        </div>
+
+        <div class="links">
+            <a class="nav-item nav-link" href="https://space.bilibili.com/73027398">
+                <img class="social-img" src="../img/bilibili.png" width="15" />
+            </a>
+            <a class="nav-link nav-item" href="https://github.com/Darin1123">
+                <img class="social-img" src="../img/github.png" width="15" />
+            </a>
+            <a class="nav-link nav-item" href="https://www.linkedin.com/in/zefeng-wang-7b0770186/">
+                <img class="social-img" src="../img/linkedin.png" />
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="section" id="home">
+        <div class="section-text">
+            <h2>关于我</h2>
+
+            <p class="gray-text">
+                我是王泽丰, 是一名就读于 <a href="https://www.mcmaster.ca/">麦克马斯特大学</a> 软件工程专业的大四学生.
+            </p>
+        </div>
+        <img id="home-img" src="../img/me-square.jpg" />
+    </div>
+
+    <div class="section section-b white-text" id="drawing-section">
+        <div class="sub-container">
+            <div class="section-text">
+                <h2>绘画</h2>
+                <p>画画是成就感满满的事务.</p>
+                <a class="section-link" href="../drawing/index.html">更多</a>
+            </div>
+
+            <div class="deck">
+                <img class="display-img" height="150" src="../drawing/img/cc.jpg" />
+                <img class="display-img" height="150" src="../drawing/img/messi.jpg" />
+                <img class="display-img" height="150" src="../drawing/img/neo.jpg" />
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="coding-section">
+        <div class="sub-container">
+            <div class="section-text">
+                <h2>Coding</h2>
+                <p>谁不热爱编程呢?</p>
+            </div>
+            <div class="deck">
+<!--                <a class="card-link" href="java/">-->
+<!--                    <div class="card">-->
+<!--                        <div class="card-img">-->
+<!--                            <img src="img/java.jpg" width="150" />-->
+<!--                        </div>-->
+<!--                        <div class="card-text">-->
+<!--                            <h4>Java Notes</h4>-->
+<!--                            <p class="gray-text">-->
+<!--                                I believe it is the first langauge that I need to be master of.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </a>-->
+
+<!--                <a class="card-link" href="https://wd4.ca">-->
+<!--                    <div class="card">-->
+<!--                        <div class="card-img">-->
+<!--                            <img src="img/bookstore.png" width="150" />-->
+<!--                        </div>-->
+
+<!--                        <div class="card-text">-->
+<!--                            <h4>Bookstore Finder</h4>-->
+<!--                            <p class="gray-text">A web course project.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </a>-->
+
+<!--                <a class="card-link" href="db_design_notes/">-->
+<!--                    <div class="card">-->
+<!--                        <div class="card-img">-->
+<!--                            <img src="img/databasedesign.jpg" width="150" />-->
+<!--                        </div>-->
+
+<!--                        <div class="card-text">-->
+<!--                            <h4>DB Design Notes</h4>-->
+<!--                            <p class="gray-text">Some notes on Database Design.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </a>-->
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer></footer>
+
+<script>
+    $('#drawing').click(function() {
+        $('html,body').animate({ scrollTop: $("#drawing-section").offset().top - 8 }, 200)
+    });
+    $('#coding').click(function() {
+        $('html,body').animate({ scrollTop: $("#coding-section").offset().top - 8 }, 200)
+    });
+</script>
+</body>
+</html>
