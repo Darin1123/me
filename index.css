@@ -14,6 +14,7 @@ html, body {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 /* main */
@@ -28,6 +29,11 @@ main .section {
     margin-bottom: 20px;
 }
 
+main .section-b {
+    background-color: #222;
+    color: #fff;
+}
+
 main .section:nth-child(1) {
     margin-top: 20px;
 }
@@ -35,6 +41,42 @@ main .section:nth-child(1) {
 .section-content {
     width: 100%;
     max-width: 1080px;
+}
+
+.deck {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    cursor: pointer;
+    margin-left: 20px;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);*/
+    width: 200px;
+    border-radius: 5px;
+    /*overflow: hidden;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card:nth-child(1) {
+    margin-left: 0;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.card .card-info {
+    /*opacity: 0;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 /* footer */

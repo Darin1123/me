@@ -16,7 +16,7 @@
     <link href="index.css" rel="stylesheet" type="text/css"/>
     <link href="css/util.css" rel="stylesheet" type="text/css"/>
     <link href="css/nav.css" rel="stylesheet" type="text/css"/>
-    <link type="text/css" rel="stylesheet" href="lib/lightgallery/css/lightgallery.css" />
+    <link type="text/css" rel="stylesheet" href="lib/lightgallery/css/lightgallery.css"/>
 </head>
 <body>
 <nav class="navbar">
@@ -27,7 +27,7 @@
         </span>
     </div>
     <ul class="main-nav" id="js-menu">
-        <li id="home" >
+        <li id="home">
             <span class="nav-links">Home</span>
         </li>
         <li id="gallery">
@@ -36,11 +36,11 @@
         <li id="project">
             <span class="nav-links">Project</span>
         </li>
-        <li>
+        <li id="contact">
             <a href="#" class="nav-links">Contact Me</a>
         </li>
         <li>
-            <a href="http://www.zhejianglao.cn" class="nav-links" target="_blank">Blog</a>
+            <a href="http://www.zhejianglao.cn" class="w-full nav-links" target="_blank">Blog</a>
         </li>
     </ul>
 </nav>
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="section" id="gallery-section">
+    <div class="section section-b" id="gallery-section">
         <div class="section-content">
             <div class="xx-large bold">Gallery</div>
             <div class="m-t-20">Life is brilliant. To capture the beauty of life, we'd better use our eyes wisely.</div>
@@ -126,12 +126,52 @@
     <div class="section" id="project-section">
         <div class="section-content">
             <div class="xx-large">Project</div>
+            <div class="m-t-20">Check out my projects!</div>
+            <div class="deck">
+                <div class="card">
+                    <a target="_blank" href="https://github.com/Darin1123/schedule-generator-springmvc">
+                        <img class="card-img" src="img/project/sg.jpeg" alt="sg"/>
+                        <div class="card-info">
+                            <div class="x-large hand-write m-t-20">Schedule Generator</div>
+                            <div>This is a Spring MVC project that generates schedules based on user input.</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="https://cardlearn-14f0c.web.app/#/" target="_blank">
+                        <img class="card-img" src="img/project/cardlearn.png" alt="card-learn"/>
+                        <div class="card-info">
+                            <div class="x-large hand-write m-t-20">CardLearn</div>
+                            <div>This is a React project that helps student manage their study content. (Only
+                                frontend)
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a target="_blank" href="https://github.com/Darin1123/Retro-Shooting-Game">
+                        <img class="card-img" src="img/project/game.png" alt="game"/>
+                        <div class="card-info">
+                            <div class="x-large hand-write m-t-20">Retro Shooting Game</div>
+                            <div>This is a game based on a Python library name Pyxel. Developing games makes a lot of fun!</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="section" id="contact-section">
         <div class="section-content">
             <div class="xx-large">Contact Me</div>
+            <div class="m-t-20">
+                You can contact me by <a class="link bold" href="mailto: darin1123@outlook.com">email</a>.
+            </div>
+            <div class="m-t-10">
+                Look forward to your messages! 😊
+            </div>
         </div>
     </div>
 </main>
@@ -170,15 +210,15 @@
 <script type="text/javascript">
     /* light gallery */
     lightGallery(document.getElementById('lightgallery'), {
-        thumbnail:true,
+        thumbnail: true,
         animateThumb: false,
         showThumbByDefault: false
     });
 
     // disable img right click
     let imgs = $("img");
-    $(document).ready(function() {
-        imgs.on("contextmenu",function(){
+    $(document).ready(function () {
+        imgs.on("contextmenu", function () {
             return false;
         });
         imgs.on("dragstart", function () {
@@ -194,7 +234,10 @@
         htmlAndBody.animate({scrollTop: $("#gallery-section").offset().top - 60}, 200)
     });
     $('#project').click(function () {
-        htmlAndBody.animate({scrollTop: $("#project-section").offset().top}, 200)
+        htmlAndBody.animate({scrollTop: $("#project-section").offset().top - 60}, 200)
+    });
+    $('#contact').click(function () {
+        htmlAndBody.animate({scrollTop: $("#contact-section").offset().top - 60}, 200)
     });
 
     /* nav bar */

@@ -123,3 +123,7 @@
 .none {
     display: none;
 }
+
+.padding-10 {
+    padding: 10px;
+}
