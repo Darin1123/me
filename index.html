@@ -16,24 +16,25 @@
     <link href="index.css" rel="stylesheet" type="text/css"/>
     <link href="css/util.css" rel="stylesheet" type="text/css"/>
     <link href="css/nav.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" rel="stylesheet" href="lib/lightgallery/css/lightgallery.css" />
 </head>
 <body>
 <nav class="navbar">
     <div class="flex center space-between w-full">
         <a href="#" class="logo">Zefeng Wang</a>
         <span class="navbar-toggle" id="js-navbar-toggle">
-            <img src="img/menu-icon.png" height="20" alt="menu"/>
+            <img src="img/index/menu-icon.png" height="20" alt="menu"/>
         </span>
     </div>
     <ul class="main-nav" id="js-menu">
-        <li>
-            <a id="me" href="#" class="nav-links">Home</a>
+        <li id="home" >
+            <span class="nav-links">Home</span>
         </li>
-        <li>
-            <a id="gallery" href="#" class="nav-links">Gallery</a>
+        <li id="gallery">
+            <span class="nav-links">Gallery</span>
         </li>
-        <li>
-            <a href="#" class="nav-links">Project</a>
+        <li id="project">
+            <span class="nav-links">Project</span>
         </li>
         <li>
             <a href="#" class="nav-links">Contact Me</a>
@@ -43,12 +44,11 @@
         </li>
     </ul>
 </nav>
-
 <main>
     <div class="section" id="me-section">
         <div class="section-content flex space-between">
             <div class="flex-column center" id="me-brief">
-                <img src="img/me.jpeg" alt="me" class="profile-img"/>
+                <img src="img/index/me.jpeg" alt="me" class="profile-img"/>
                 <div class="m-t-40 hand-write text-center">
                     "I'm a Java developer."
                 </div>
@@ -63,7 +63,7 @@
                     My name is <span class="bold">Zefeng Wang</span>
                     , you can also call me <b>Darin</b>.
                     I am a level-4 software engineering student at
-                    <a class="mcmaster link" target="_blank" href="https://www.mcmaster.ca">McMaster University</a>.
+                    <a class="mcmaster link hand-write" target="_blank" href="https://www.mcmaster.ca">McMaster University</a>.
 
                     <div class="stack m-r-40">
                         <div class="large m-t-40 bold">My Tech Stack</div>
@@ -84,6 +84,29 @@
     <div class="section" id="gallery-section">
         <div class="section-content">
             <div class="xx-large">Gallery</div>
+            <div id="lightgallery">
+                <a href="img/gallery/new-york.png">
+                    <img src="img/gallery/new-york.png" alt='new york'>
+                </a>
+                <a href="img/gallery/chenyixun.jpg">
+                    <img src="img/gallery/chenyixun.jpg" alt='chenyixun'>
+                </a>
+                <a href="img/gallery/malone.jpg">
+                    <img src="img/gallery/malone.jpg" alt="malone">
+                </a>
+                <a href="img/gallery/messi.jpg">
+                    <img src="img/gallery/messi.jpg" alt="messi">
+                </a>
+                <a href="img/gallery/snow.jpg">
+                    <img src="img/gallery/snow.jpg" alt="snow">
+                </a>
+                <a href="img/gallery/hamilton.jpeg">
+                    <img src="img/gallery/hamilton.jpeg" alt="hamilton">
+                </a>
+                <a href="img/gallery/statue.jpeg">
+                    <img src="img/gallery/statue.jpeg" alt="statue">
+                </a>
+            </div>
         </div>
     </div>
 
@@ -123,20 +146,38 @@
         </a>
     </div>
     <div class="m-b-10">
-        Hosted by Github.
+        Hosted by <a class="link bold gray-text" href="https://pages.github.com/" target="_blank">Github Page</a>.
     </div>
     <div>
         Copyright &#169; 2021 Zefeng Wang. All rights Reserved.
     </div>
 </footer>
 
-<script>
-    let htmlAndBody = $('html,body');
-    $('#gallery').click(function () {
-        htmlAndBody.animate({scrollTop: $("#gallery-section").offset().top - 8}, 200)
+<script src="lib/lightgallery/js/lightgallery.min.js"></script>
+<script type="text/javascript">
+    /* light gallery */
+    lightGallery(document.getElementById('lightgallery'));
+
+    // disable img right click
+    let imgs = $("img");
+    $(document).ready(function() {
+        imgs.on("contextmenu",function(){
+            return false;
+        });
+        imgs.on("dragstart", function () {
+            return false;
+        })
     });
-    $('#coding').click(function () {
-        htmlAndBody.animate({scrollTop: $("#project-section").offset().top - 8}, 200)
+
+    let htmlAndBody = $('html,body');
+    $('#home').click(function () {
+        htmlAndBody.animate({scrollTop: $("html").offset().top}, 200)
+    });
+    $('#gallery').click(function () {
+        htmlAndBody.animate({scrollTop: $("#gallery-section").offset().top - 60}, 200)
+    });
+    $('#project').click(function () {
+        htmlAndBody.animate({scrollTop: $("#project-section").offset().top}, 200)
     });
 
     /* nav bar */

@@ -53,6 +53,10 @@ footer {
     margin-right: 0;
 }
 
+footer a {
+    text-decoration: none;
+}
+
 footer .social-img {
     height: 20px;
     opacity: 0.5;
@@ -84,6 +88,29 @@ footer .social-img:hover {
 
 .me-content {
     margin-left: 40px;
+}
+
+.background-img {
+    width: 100%;
+    max-width: 1080px;
+}
+
+#lightgallery {
+    display: flex;
+    width: fit-content;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#lightgallery img {
+    height: 240px;
+    border-radius: 5px;
+    margin: 10px 10px 0 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+#lightgallery img:hover {
+    transform: translateY(-10);
 }
 
 @media screen and (max-width: 500px) {

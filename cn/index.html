@@ -1,129 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-title" content="Darin">
-	<link href="../img/icon.png" rel="apple-touch-icon-precomposed" sizes="114x114" />
-	<link href="../img/favicon.ico" rel="shortcut icon" type="XX/ico" />
-	<title>Darin</title>
+    <link href="../img/icon.png" rel="apple-touch-icon-precomposed" sizes="114x114"/>
+    <link href="../img/favicon.ico" rel="shortcut icon" type="XX/ico"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap"
+          rel="stylesheet">
+    <title>Zefeng Wang's Personal Website</title>
     <script type="text/javascript" src="../lib/jquery.js"></script>
-    <link href="../index.css" rel="stylesheet" type="text/css" />
+    <link href="../index.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/util.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/nav.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<header>
-    <div class="start" id="nav">
-        <div class="links">
-            <a class="nav-link nav-item" href="#">
-                <img class="link-img" id="icon" src="../img/icon.png" width="30" />
-            </a>
-            <span class="nav-link nav-item" id="drawing">绘画</span>
-            <span class="nav-link nav-item" id="coding">编程</span>
-<!--            <span id="diary" class="nav-link nav-item" href="/me/diary">Diary</span>-->
-        </div>
-
-        <div class="links">
-            <a class="nav-item nav-link" href="https://space.bilibili.com/73027398">
-                <img class="social-img" src="../img/social/bilibili.png" width="15" />
-            </a>
-            <a class="nav-link nav-item" href="https://github.com/Darin1123">
-                <img class="social-img" src="../img/social/github.png" width="15" />
-            </a>
-            <a class="nav-link nav-item" href="https://www.linkedin.com/in/zefeng-wang-7b0770186/">
-                <img class="social-img" src="../img/social/linkedin.png" />
-            </a>
-        </div>
+<nav class="navbar">
+    <div class="flex center space-between w-full">
+        <a href="#" class="logo">Zefeng Wang</a>
+        <span class="navbar-toggle" id="js-navbar-toggle">
+            <img src="../img/index/menu-icon.png" height="20" alt="menu"/>
+        </span>
     </div>
-</header>
+    <ul class="main-nav" id="js-menu">
+        <li>
+            <a id="me" href="#" class="nav-links">主页</a>
+        </li>
+        <li>
+            <a id="gallery" href="#" class="nav-links">展览</a>
+        </li>
+        <li>
+            <a href="#" class="nav-links">项目</a>
+        </li>
+        <li>
+            <a href="#" class="nav-links">联系我</a>
+        </li>
+        <li>
+            <a href="http://www.zhejianglao.cn" class="nav-links" target="_blank">博客</a>
+        </li>
+    </ul>
+</nav>
 
 <main>
-    <div class="section" id="home">
-        <div class="section-text">
-            <h2>关于我</h2>
+    <div class="section" id="me-section">
+        <div class="section-content flex space-between">
+            <div class="flex-column center" id="me-brief">
+                <img src="../img/index/me.jpeg" alt="me" class="profile-img"/>
+                <div class="m-t-40 hand-write text-center">
+                    "I'm a Java developer."
+                </div>
+                <div class="m-t-10 text-center">
+                    <span class="bold">状态</span>: 即将毕业
+                </div>
+            </div>
+            <article class="me-content">
+                <div class="xx-large bold">关于我</div>
+                <div class="m-t-10">
+                    你好! 很高兴认识你.
+                    我的名字叫 <span class="bold">王泽丰</span>
+                    , 你也可以叫我 <b>Darin</b>.
+                    我是
+                    <a class="mcmaster link" target="_blank" href="https://www.mcmaster.ca">
+                        麦克马斯特大学
+                    </a>软件工程专业大四的学生.
 
-            <p class="gray-text">
-                我是王泽丰, 是一名就读于 <a href="https://www.mcmaster.ca/">麦克马斯特大学</a> 软件工程专业的大四学生.
-            </p>
+                    <div class="stack m-r-40">
+                        <div class="large m-t-40 bold">我的技术栈</div>
+                        <div class="m-t-10">我专注于 Java 相关的开发. 下面是我的技术栈:</div>
+                        <div class="m-t-10 m-l-20">
+                            <div class="m-t-5">1) &nbsp; Java 编程语言</div>
+                            <div class="m-t-5">2) &nbsp; Spring 框架</div>
+                            <div class="m-t-5">3) &nbsp; MySQL & MyBatis</div>
+                            <div class="m-t-5">4) &nbsp; React 框架</div>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
         </div>
-        <img id="home-img" src="../img/me-square.jpg" />
     </div>
 
-    <div class="section section-b white-text" id="drawing-section">
-        <div class="sub-container">
-            <div class="section-text">
-                <h2>绘画</h2>
-                <p>画画是成就感满满的事务.</p>
-                <a class="section-link" href="../drawing/index.html">更多</a>
-            </div>
-
-            <div class="deck">
-                <img class="display-img" height="150" src="../drawing/img/cc.jpg" />
-                <img class="display-img" height="150" src="../drawing/img/messi.jpg" />
-                <img class="display-img" height="150" src="../drawing/img/neo.jpg" />
-            </div>
+    <div class="section" id="gallery-section">
+        <div class="section-content">
+            <div class="xx-large">Gallery</div>
         </div>
     </div>
 
-    <div class="section" id="coding-section">
-        <div class="sub-container">
-            <div class="section-text">
-                <h2>Coding</h2>
-                <p>谁不热爱编程呢?</p>
-            </div>
-            <div class="deck">
-<!--                <a class="card-link" href="java/">-->
-<!--                    <div class="card">-->
-<!--                        <div class="card-img">-->
-<!--                            <img src="img/java.jpg" width="150" />-->
-<!--                        </div>-->
-<!--                        <div class="card-text">-->
-<!--                            <h4>Java Notes</h4>-->
-<!--                            <p class="gray-text">-->
-<!--                                I believe it is the first langauge that I need to be master of.-->
-<!--                            </p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
+    <div class="section" id="project-section">
+        <div class="section-content">
+            <div class="xx-large">Project</div>
+        </div>
+    </div>
 
-<!--                <a class="card-link" href="https://wd4.ca">-->
-<!--                    <div class="card">-->
-<!--                        <div class="card-img">-->
-<!--                            <img src="img/bookstore.png" width="150" />-->
-<!--                        </div>-->
-
-<!--                        <div class="card-text">-->
-<!--                            <h4>Bookstore Finder</h4>-->
-<!--                            <p class="gray-text">A web course project.</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-
-<!--                <a class="card-link" href="db_design_notes/">-->
-<!--                    <div class="card">-->
-<!--                        <div class="card-img">-->
-<!--                            <img src="img/databasedesign.jpg" width="150" />-->
-<!--                        </div>-->
-
-<!--                        <div class="card-text">-->
-<!--                            <h4>DB Design Notes</h4>-->
-<!--                            <p class="gray-text">Some notes on Database Design.</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-
-            </div>
+    <div class="section" id="contact-section">
+        <div class="section-content">
+            <div class="xx-large">Contact Me</div>
         </div>
     </div>
 </main>
 
-<footer></footer>
+<footer>
+    <div class="m-b-20">
+        <a class="footer-link" href="https://space.bilibili.com/73027398" target="_blank">
+            <img class="social-img" src="img/social/bilibili.png" alt="bilibili-logo">
+        </a>
+        <a class="footer-link" href="https://github.com/Darin1123" target="_blank">
+            <img class="social-img" src="../img/social/github.png" alt="github-logo"/>
+        </a>
+        <a class="footer-link" href="https://www.linkedin.com/in/zefeng-wang-7b0770186/" target="_blank">
+            <img class="social-img" src="../img/social/linkedin.png" alt="linkedin-logo"/>
+        </a>
+        <a class="footer-link" href="https://www.instagram.com/wang.darin/" target="_blank">
+            <img class="social-img" src="../img/social/instagram.png" alt="instagram-logo"/>
+        </a>
+        <a class="footer-link" href="https://www.youtube.com/channel/UC93AWP3AJLYbQZHZCo_XZaw" target="_blank">
+            <img class="social-img" src="../img/social/youtube.png" alt="youtube-logo"/>
+        </a>
+
+        <a class="footer-link" href="https://twitter.com/darin_wang" target="_blank">
+            <img class="social-img" src="../img/social/twitter.png" alt="twitter-logo"/>
+        </a>
+    </div>
+    <div class="m-b-10">
+        Hosted by <a class="link bold gray-text" href="https://pages.github.com/" target="_blank">Github Page</a>.
+    </div>
+    <div>
+        Copyright &#169; 2021 Zefeng Wang. All rights Reserved.
+    </div>
+</footer>
 
 <script>
-    $('#drawing').click(function() {
-        $('html,body').animate({ scrollTop: $("#drawing-section").offset().top - 8 }, 200)
+    // disable img right click
+    $(document).ready(function() {
+        $("img").on("contextmenu",function(){
+            return false;
+        });
+        $("img").on("dragstart", function () {
+            return false;
+        })
     });
-    $('#coding').click(function() {
-        $('html,body').animate({ scrollTop: $("#coding-section").offset().top - 8 }, 200)
+
+    let htmlAndBody = $('html,body');
+    $('#gallery').click(function () {
+        htmlAndBody.animate({scrollTop: $("#gallery-section").offset().top - 8}, 200)
+    });
+    $('#coding').click(function () {
+        htmlAndBody.animate({scrollTop: $("#project-section").offset().top - 8}, 200)
+    });
+
+    /* nav bar */
+    let mainNav = document.getElementById('js-menu');
+    let navBarToggle = document.getElementById('js-navbar-toggle');
+
+    navBarToggle.addEventListener('click', function () {
+        mainNav.classList.toggle('active');
     });
 </script>
 </body>
