@@ -1,3 +1,5 @@
+@import "css/font.css";
+
 * {
     transition: 0.4s ease-in-out;
     box-sizing: border-box;
@@ -164,6 +166,15 @@ footer .social-img:hover {
 .blank {
     padding-bottom: 5px;
     border-bottom: 1px solid #888;
+}
+
+.gallery-title {
+    font-family: 'RockSalt', serif;
+}
+
+.project-title {
+    font-weight: bold;
+    font-family: "Courier New", serif;
 }
 
 @media screen and (max-width: 500px) {
