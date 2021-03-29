@@ -47,6 +47,10 @@
     font-size: xx-large;
 }
 
+.small {
+    font-size: small;
+}
+
 .bold {
     font-weight: bold;
 }
