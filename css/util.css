@@ -1,0 +1,117 @@
+/* primitive */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* text */
+.white-text {
+    color: white;
+}
+
+.gray-text {
+    color: #444;
+}
+
+.emph {
+    color: rgba(80, 180, 80, 1);
+}
+
+.hand-write {
+    font-family: 'Parisienne', cursive;
+}
+
+.mcmaster {
+    color: rgb(132, 1, 68);
+}
+
+.large {
+    font-size: large;
+}
+
+.x-large {
+    font-size: x-large;
+}
+
+.xx-large {
+    font-size: xx-large;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+/* margin */
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-5 {
+    margin-top: 5px;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.m-t-20 {
+    margin-top: 20px;
+}
+
+.m-t-40 {
+    margin-top: 40px;
+}
+
+.m-r-20 {
+    margin-right: 20px;
+}
+
+.m-r-40 {
+    margin-right: 40px;
+}
+
+.m-l-40 {
+    margin-left: 40px;
+}
+
+.m-l-10 {
+    margin-left: 10px;
+}
+
+.m-l-20 {
+    margin-left: 20px;
+}
+
+/* display */
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.center {
+    align-items: center;
+}
+
+/* other */
+.w-full {
+    width: 100%;
+}
