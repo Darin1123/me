@@ -1,5 +1,5 @@
 * {
-    transition: all 0.4s;
+    transition: 0.4s ease-in-out;
     box-sizing: border-box;
 }
 html, body {
@@ -80,6 +80,20 @@ footer .social-img:hover {
 
 #me-content {
     flex-direction: column;
+}
+
+.me-content {
+    margin-left: 40px;
+}
+
+@media screen and (max-width: 500px) {
+    #me-brief {
+        display: none;
+    }
+
+    .me-content {
+        margin-left: 0;
+    }
 }
 
 @media screen and (min-width: 900px) {
