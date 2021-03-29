@@ -65,7 +65,7 @@ footer .social-img:hover {
 /* other */
 
 .profile-img {
-    width: 180px;
+    width: 100px;
     border-radius: 50%;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
@@ -83,6 +83,12 @@ footer .social-img:hover {
 }
 
 @media screen and (min-width: 900px) {
+    .profile-img {
+        width: 180px;
+        border-radius: 50%;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+
     #me-content {
         flex-direction: row;
     }
