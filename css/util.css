@@ -3,8 +3,16 @@
     text-align: center;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 .white-text {
     color: white;
+}
+
+.dark-gray-text {
+    color: #444;
 }
 
 .gray-text {
@@ -17,6 +25,10 @@
 
 .hand-write {
     font-family: 'Parisienne', cursive;
+}
+
+.code {
+    font-family: "Courier New", serif;
 }
 
 .mcmaster {
@@ -41,6 +53,10 @@
 
 .italic {
     font-style: italic;
+}
+
+.rock-salt {
+    font-family: 'RockSalt', serif;
 }
 
 /* margin */
