@@ -119,3 +119,7 @@
 .link:hover {
     text-decoration: underline;
 }
+
+.none {
+    display: none;
+}

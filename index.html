@@ -46,14 +46,17 @@
 </nav>
 <main>
     <div class="section" id="me-section">
-        <div class="section-content flex space-between">
+        <div class="me-section section-content flex space-between">
             <div class="flex-column center" id="me-brief">
                 <img src="img/index/me.jpeg" alt="me" class="profile-img"/>
-                <div class="m-t-40 hand-write text-center">
-                    "I'm a Java developer."
-                </div>
-                <div class="m-t-10 text-center">
-                    <span class="bold">Status</span>: Graduating
+                <div class="flex-column center me-brief-detail">
+                    <div class="m-t-40 hand-write text-center">
+                        "I'm a Java developer."
+                    </div>
+                    <div class="m-t-10 text-center">
+                        <span class="bold">Status</span>:
+                        &nbsp;<span class="blank">Graduating 🤯</span>
+                    </div>
                 </div>
             </div>
             <article class="me-content">
@@ -63,7 +66,7 @@
                     My name is <span class="bold">Zefeng Wang</span>
                     , you can also call me <b>Darin</b>.
                     I am a level-4 software engineering student at
-                    <a class="mcmaster link hand-write" target="_blank" href="https://www.mcmaster.ca">McMaster University</a>.
+                    <a class="mcmaster link bold" target="_blank" href="https://www.mcmaster.ca">McMaster University</a>.
 
                     <div class="stack m-r-40">
                         <div class="large m-t-40 bold">My Tech Stack</div>
@@ -75,7 +78,6 @@
                             <div class="m-t-5">4) &nbsp; React Framework</div>
                         </div>
                     </div>
-
                 </div>
             </article>
         </div>
@@ -83,28 +85,38 @@
 
     <div class="section" id="gallery-section">
         <div class="section-content">
-            <div class="xx-large">Gallery</div>
-            <div id="lightgallery">
+            <div class="xx-large bold">Gallery</div>
+            <div class="m-t-20">Life is brilliant. To capture the beauty of life, we'd better use our eyes wisely.</div>
+            <div id="lightgallery" class="m-t-20">
                 <a href="img/gallery/new-york.png">
                     <img src="img/gallery/new-york.png" alt='new york'>
                 </a>
-                <a href="img/gallery/chenyixun.jpg">
+                <a href="img/gallery/chenyixun.jpg" class="none">
                     <img src="img/gallery/chenyixun.jpg" alt='chenyixun'>
                 </a>
-                <a href="img/gallery/malone.jpg">
+                <a href="img/gallery/malone.jpg" class="none">
                     <img src="img/gallery/malone.jpg" alt="malone">
                 </a>
-                <a href="img/gallery/messi.jpg">
-                    <img src="img/gallery/messi.jpg" alt="messi">
+                <a href="img/gallery/cat&dog.jpeg" class="none">
+                    <img src="img/gallery/cat&dog.jpeg" alt="cat&dog">
                 </a>
-                <a href="img/gallery/snow.jpg">
-                    <img src="img/gallery/snow.jpg" alt="snow">
+                <a href="img/gallery/kc.jpeg" class="none">
+                    <img src="img/gallery/kc.jpeg" alt="kc">
                 </a>
-                <a href="img/gallery/hamilton.jpeg">
+                <a href="img/gallery/hamilton.jpeg" class="none">
                     <img src="img/gallery/hamilton.jpeg" alt="hamilton">
                 </a>
-                <a href="img/gallery/statue.jpeg">
+                <a href="img/gallery/snow.jpg" class="none">
+                    <img src="img/gallery/snow.jpg" alt="snow">
+                </a>
+                <a href="img/gallery/statue.jpeg" class="none">
                     <img src="img/gallery/statue.jpeg" alt="statue">
+                </a>
+                <a href="img/gallery/bridge.jpeg" class="none">
+                    <img src="img/gallery/bridge.jpeg" alt="bridge">
+                </a>
+                <a href="img/gallery/messi.jpg" class="none">
+                    <img src="img/gallery/messi.jpg" alt="messi">
                 </a>
             </div>
         </div>
@@ -156,7 +168,11 @@
 <script src="lib/lightgallery/js/lightgallery.min.js"></script>
 <script type="text/javascript">
     /* light gallery */
-    lightGallery(document.getElementById('lightgallery'));
+    lightGallery(document.getElementById('lightgallery'), {
+        thumbnail:true,
+        animateThumb: false,
+        showThumbByDefault: false
+    });
 
     // disable img right click
     let imgs = $("img");
