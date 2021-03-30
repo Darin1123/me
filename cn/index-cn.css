@@ -67,10 +67,10 @@ main .section:nth-child(1) {
     margin-left: 0;
 }
 
-.card-img:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    transform: translateY(-10px);
-}
+/*.card-img:hover {*/
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);*/
+/*    transform: translateY(-10px);*/
+/*}*/
 
 .card-img {
     width: 100%;
