@@ -1,4 +1,4 @@
-@import "css/font.css";
+@import "../css/font.css";
 
 * {
     transition: 0.4s ease-in-out;
