@@ -36,9 +36,9 @@ main .section-b {
     color: #fff;
 }
 
-main .section:nth-child(1) {
+/*main .section:nth-child(1) {
     margin-top: 20px;
-}
+}*/
 
 .section-content {
     width: 100%;
